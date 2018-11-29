@@ -9,6 +9,9 @@ public class Hoja {
         this.matriz = new ArrayList<ArrayList<Celda>>();
         this.nombreHoja = nombreHoja;
     }
-
+    public Hoja crearHoja (String nombre){
+        Hoja hoja = new Hoja(nombre);
+        return hoja;
+    }
 
 }

@@ -6,10 +6,11 @@ public class Comando {
         Scanner sc = new Scanner(System.in);
         String opcion = sc.nextLine();
        System.out.println(comprobar(opcion));
-       if (!comprobar(opcion)){
-            System.out.println("ERROR");
-        }else{
+       if (comprobar(opcion)){
            ejecutar(opcion);
+
+        }else{
+           System.out.println("ERROR");
        }
 
     }
@@ -40,18 +41,16 @@ public class Comando {
     public void ejecutar(String comando){
         switch(comando){
             case "crearLibro":
-                CrearLibro cLibro = new CrearLibro();
-                this.libro = cLibro.create();
-                break;
+                libro.crearLibro();
             case "crearHoja":
                 //si el libro no esta vacio
                 if (!libro.esLibroVacio()) {
-                    System.out.println("Introducir nombre de hoja");
+                  /*  System.out.println("Introducir nombre de hoja");
                     Scanner sc = new Scanner(System.in);
                     String nomb = sc.nextLine();
                     CrearHoja h = new CrearHoja();
                     Hoja hoja = h.crearHoja(nomb);
-                    libro.insertarHojaLista(nomb,hoja);
+                    libro.insertarHojaLista(nomb,hoja);*/
                 }
         }
 
