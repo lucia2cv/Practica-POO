@@ -1,13 +1,12 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Hoja {
     private String nombreHoja;
-
-    private HashMap<Coordenada,Celda> matriz;
+   // private int id;
+    private ArrayList<ArrayList<Celda>> matriz;
 
     public Hoja(String nombreHoja) {
-        this.matriz = new HashMap<>();
+        this.matriz = new ArrayList<ArrayList<Celda>>();
         this.nombreHoja = nombreHoja;
     }
     public Hoja crearHoja (String nombre){
