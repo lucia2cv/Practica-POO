@@ -38,8 +38,8 @@ public class Comando {
 
         }
     }
-    public void ejecutar(String comando){
-        switch(comando){
+    public void ejecutar(String comando) {
+        switch (comando) {
             case "crearLibro":
                 libro = new Libro();
                 libro.crearLibro();
@@ -62,11 +62,18 @@ public class Comando {
 
                         }
                     }
-                }catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     System.out.println("Libro no creado");
                     leerComando();
                 }
                 break;
+            case "borrarHoja":
+                try {
+
+                } catch (NullPointerException e) {
+                    System.out.println("No hay libro");
+                }
+
             case "hojaActual":
                 try {
 
@@ -78,22 +85,60 @@ public class Comando {
                     if (libro.getListaHojas().containsKey(hActual)) {
                         libro.setHojaActiva(libro.getListaHojas().get(hActual));
                         System.out.println("La hoja activa es " + libro.getHojaActiva().getNombreHoja());
-                    }else{
+                    } else {
                         System.out.println("Hoja no existente");
                     }
 
 
-
-                }catch (NullPointerException e) {
+                } catch (NullPointerException e) {
                     System.out.println("No hay libro");
                     leerComando();
                 }
                 break;
+        case "mostrar":
+        try {
+            libro.getListaHojas();//Salta la excepcion
+            System.out.println("Insertar la fila");
+            Scanner sc = new Scanner(System.in);
+            int fila = 0;
+            try {
+                fila = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException n) {
+                System.out.println("Introduce un numero valido");
+                leerComando();
+            }
+
+            System.out.println("Insertar la columna");
+            Scanner sca = new Scanner(System.in);
+            int columna = 0;
+            try {
+                columna = Integer.parseInt(sca.nextLine());
+            } catch (NumberFormatException n) {
+                System.out.println("Introduce un numero valido");
+                leerComando();
+            }
+           /* for (int i = fila; i < i + 8; i++) {
+                System.out.print(" ele");
+                System.out.print(i+ "  ");
+                for (int j = columna; j < j + 8; j++) {
+
+                    if ((i == fila) && (j == columna)) {
+                        System.out.print(" ");
+                        System.out.print("pene");
+                    } else if (i == columna) {
+
+                    }else if (j == fila ) {
+                        System.out.println("pe");
+                        System.out.println(j);
+                    }
+
+                }
+            }*/
+        } catch (NullPointerException e) {
+            System.out.println("No hay libro");
+            leerComando();
         }
-
-
-
-
+    }
     }
 
     public void setLibro(Libro l) {
