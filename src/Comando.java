@@ -77,11 +77,11 @@ public class Comando {
                     //comprobar si la hoja existe
                     if (libro.getListaHojas().containsKey(hActual)) {
                         libro.setHojaActiva(libro.getListaHojas().get(hActual));
-                        System.out.println("La hoja activa es " + libro.getHojaActiva().getNombreHoja());
+                        System.out.println("La hoja actual es " + libro.getHojaActiva().getNombreHoja());
                     }else{
                         System.out.println("Hoja no existente");
+                        leerComando();
                     }
-
 
 
                 }catch (NullPointerException e) {
@@ -89,6 +89,55 @@ public class Comando {
                     leerComando();
                 }
                 break;
+            case "borrarHoja":
+                try{
+
+                }catch (NullPointerException e){
+                    System.out.println("No hay libro");
+                }
+            case "mostrar":
+                try{
+                    libro.getListaHojas(); //para que salte la excepcion
+                    System.out.println("Insertar la fila ");
+                    Scanner sc = new Scanner(System.in);
+                    int fila = 0;
+                    try {
+                        fila = Integer.parseInt(sc.nextLine());
+                    }catch(NumberFormatException n) {
+                       System.out.println("Introduce un numero valido");
+                       leerComando();
+                    }
+                    System.out.println("Insertar la columna ");
+                    Scanner sca = new Scanner(System.in);
+                    int columna = 0;
+                    try {
+                         columna = Integer.parseInt(sca.nextLine());
+                    }catch (NumberFormatException num){
+                        System.out.println("Insertar un numero valido");
+                        leerComando();
+                    }
+                        Coordenada c = new Coordenada(fila,columna);
+                        int topeFila = fila +7;
+                        int topeColumna = columna + 11;
+                        System.out.print(" ");
+
+                        for (int i =fila;i<topeFila; i++) {
+                         System.out.print(i + " ");
+
+                        }
+
+                        System.out.println(topeFila);
+                        for (int j = columna; j< topeColumna; j++){
+                         System.out.println(j);
+                        }
+
+
+
+
+                }catch (NullPointerException e){
+                    System.out.println("No hay libro");
+                    leerComando();
+                }
         }
 
 
