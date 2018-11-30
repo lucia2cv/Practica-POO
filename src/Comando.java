@@ -77,11 +77,11 @@ public class Comando {
                     //comprobar si la hoja existe
                     if (libro.getListaHojas().containsKey(hActual)) {
                         libro.setHojaActiva(libro.getListaHojas().get(hActual));
-                        System.out.println("La hoja activa es " + libro.getHojaActiva().getNombreHoja());
+                        System.out.println("La hoja actual es " + libro.getHojaActiva().getNombreHoja());
                     }else{
                         System.out.println("Hoja no existente");
+                        leerComando();
                     }
-
 
 
                 }catch (NullPointerException e) {
@@ -116,17 +116,22 @@ public class Comando {
                         System.out.println("Insertar un numero valido");
                         leerComando();
                     }
-                     for (int i = fila ;i<i+8; i++){
-                        for ( int j = columna; j< j+8; j++){
-                            if (( i == fila) && (j == columna)){
-                                System.out.print(" ");
-                            }else if (j == columna){
-                                System.out.print(j);
-                            }else if (i == fila){
-                                System.out.print(i);
-                            }
+                        Coordenada c = new Coordenada(fila,columna);
+                        int topeFila = fila +7;
+                        int topeColumna = columna + 11;
+                        System.out.print(" ");
+
+                        for (int i =fila;i<topeFila; i++) {
+                         System.out.print(i + " ");
+
                         }
-                     }
+
+                        System.out.println(topeFila);
+                        for (int j = columna; j< topeColumna; j++){
+                         System.out.println(j);
+                        }
+
+
 
 
                 }catch (NullPointerException e){
