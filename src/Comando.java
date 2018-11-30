@@ -89,6 +89,50 @@ public class Comando {
                     leerComando();
                 }
                 break;
+            case "borrarHoja":
+                try{
+
+                }catch (NullPointerException e){
+                    System.out.println("No hay libro");
+                }
+            case "mostrar":
+                try{
+                    libro.getListaHojas(); //para que salte la excepcion
+                    System.out.println("Insertar la fila ");
+                    Scanner sc = new Scanner(System.in);
+                    int fila = 0;
+                    try {
+                        fila = Integer.parseInt(sc.nextLine());
+                    }catch(NumberFormatException n) {
+                       System.out.println("Introduce un numero valido");
+                       leerComando();
+                    }
+                    System.out.println("Insertar la columna ");
+                    Scanner sca = new Scanner(System.in);
+                    int columna = 0;
+                    try {
+                         columna = Integer.parseInt(sca.nextLine());
+                    }catch (NumberFormatException num){
+                        System.out.println("Insertar un numero valido");
+                        leerComando();
+                    }
+                     for (int i = fila ;i<i+8; i++){
+                        for ( int j = columna; j< j+8; j++){
+                            if (( i == fila) && (j == columna)){
+                                System.out.print(" ");
+                            }else if (j == columna){
+                                System.out.print(j);
+                            }else if (i == fila){
+                                System.out.print(i);
+                            }
+                        }
+                     }
+
+
+                }catch (NullPointerException e){
+                    System.out.println("No hay libro");
+                    leerComando();
+                }
         }
 
 
