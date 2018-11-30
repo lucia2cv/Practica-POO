@@ -4,16 +4,8 @@ import java.util.Map;
 public class Libro {
     private Map<String,Hoja> listaHojas;
     private Hoja hojaActiva;
-    public void Libro(){
-
-
-            this.listaHojas = new HashMap<>();
-
-
-
-
-
-
+    public Libro(){
+     this.listaHojas = new HashMap<>();
     }
     public boolean esLibroVacio (){
         return listaHojas==null;
@@ -22,6 +14,11 @@ public class Libro {
     public void setHojaActiva(Hoja hojaActiva) {
         this.hojaActiva = hojaActiva;
     }
+
+    public Hoja getHojaActiva() {
+        return hojaActiva;
+    }
+
     public Map insertarHojaLista (String nombre, Hoja hj){
             listaHojas.put(nombre,hj);
             return listaHojas;
@@ -32,18 +29,14 @@ public class Libro {
         return listaHojas;
     }
 
-    public Libro crearLibro(){
-
-        Libro l = new Libro();
+    public void crearLibro(){
         Hoja hoja1 = new Hoja("Hoja1");
         Hoja hoja2 = new Hoja("Hoja2");
         Hoja hoja3 = new Hoja("Hoja3");
-        l.listaHojas.put("Hoja1", hoja1);
-        l.listaHojas.put("Hoja2", hoja2);
-        l.listaHojas.put("Hoja3", hoja3);
+        this.listaHojas.put("Hoja1", hoja1);
+        this.listaHojas.put("Hoja2", hoja2);
+        this.listaHojas.put("Hoja3", hoja3);
         setHojaActiva(hoja1);
-
-        return l;
     }
 
 }

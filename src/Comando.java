@@ -41,17 +41,54 @@ public class Comando {
     public void ejecutar(String comando){
         switch(comando){
             case "crearLibro":
+                libro = new Libro();
                 libro.crearLibro();
+                System.out.println(libro.getHojaActiva().getNombreHoja());
+                leerComando();
+                break;
             case "crearHoja":
-                //si el libro no esta vacio
-                if (!libro.esLibroVacio()) {
-                  /*  System.out.println("Introducir nombre de hoja");
-                    Scanner sc = new Scanner(System.in);
-                    String nomb = sc.nextLine();
-                    CrearHoja h = new CrearHoja();
-                    Hoja hoja = h.crearHoja(nomb);
-                    libro.insertarHojaLista(nomb,hoja);*/
+                try {
+                    if (!libro.esLibroVacio()) {
+                        System.out.println("Nombre de la hoja");
+                        Scanner sc = new Scanner(System.in);
+                        String nomb = sc.nextLine();
+                        //comprobamos que el nombre de la hoja no tenga espacios y no este repetido
+                        if ((nomb.indexOf(" ") == -1) && (!libro.getListaHojas().containsKey(nomb))) {
+
+                            Hoja hojaNueva = new Hoja(nomb);
+                            libro.insertarHojaLista(nomb, hojaNueva);
+                            libro.setHojaActiva(hojaNueva);
+                            System.out.println(libro.getHojaActiva().getNombreHoja());
+
+                        }
+                    }
+                }catch (NullPointerException e){
+                    System.out.println("Libro no creado");
+                    leerComando();
                 }
+                break;
+            case "hojaActual":
+                try {
+
+                    libro.getListaHojas(); //para que salte la excepcion
+                    System.out.println("Introducir la hoja que se desea como actual");
+                    Scanner sc = new Scanner(System.in);
+                    String hActual = sc.nextLine();
+                    //comprobar si la hoja existe
+                    if (libro.getListaHojas().containsKey(hActual)) {
+                        libro.setHojaActiva(libro.getListaHojas().get(hActual));
+                        System.out.println("La hoja activa es " + libro.getHojaActiva().getNombreHoja());
+                    }else{
+                        System.out.println("Hoja no existente");
+                    }
+
+
+
+                }catch (NullPointerException e) {
+                    System.out.println("No hay libro");
+                    leerComando();
+                }
+                break;
         }
 
 
@@ -61,5 +98,9 @@ public class Comando {
 
     public void setLibro(Libro l) {
         this.libro = l;
+    }
+
+    public Libro getLibro() {
+        return libro;
     }
 }

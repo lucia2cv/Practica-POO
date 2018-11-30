@@ -14,4 +14,8 @@ public class Hoja {
         return hoja;
     }
 
+    public String getNombreHoja() {
+        return nombreHoja;
+    }
+
 }
